@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Cloud Digital Leadership Quiz - MyTechLetter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+        <a href="index.html" class="logo">MyTechLetter</a>
+        <nav class="main-nav">
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="tech_letters.html">Tech Letters</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="about.html">About Me</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h1>Google Cloud Digital Leadership Quiz</h1>
+                <p class="quiz-description">Test your knowledge across different Google Cloud and digital transformation topics. Choose a category or take the comprehensive quiz covering all topics.</p>
+                <div class="quiz-progress" style="display: none;">
+                    <span id="question-counter">Question 1 of 12</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic Selection -->
+            <div class="topic-selection" id="topic-selection">
+                <h2>Choose Your Quiz Topic</h2>
+                <div class="topics-grid">
+                    <div class="topic-card" onclick="quiz.selectTopic('cloud-revolution')">
+                        <div class="topic-icon">☁️</div>
+                        <h3>Cloud Revolution</h3>
+                        <p>Cloud eras, transformation mindset, and digital transformation drivers</p>
+                        <div class="topic-stats">6 questions available</div>
+                    </div>
+                    
+                    <div class="topic-card" onclick="quiz.selectTopic('shared-responsibility')">
+                        <div class="topic-icon">🔒</div>
+                        <h3>Shared Responsibility Model</h3>
+                        <p>Security responsibilities, service models, and cloud provider vs customer roles</p>
+                        <div class="topic-stats">5 questions available</div>
+                    </div>
+                    
+                    <div class="topic-card" onclick="quiz.selectTopic('google-cloud-services')">
+                        <div class="topic-icon">🚀</div>
+                        <h3>Google Cloud Services</h3>
+                        <p>GCP products, serverless computing, data analytics, and platform capabilities</p>
+                        <div class="topic-stats">7 questions available</div>
+                    </div>
+                    
+                    <div class="topic-card" onclick="quiz.selectTopic('digital-transformation')">
+                        <div class="topic-icon">⚡</div>
+                        <h3>Digital Transformation</h3>
+                        <p>Business processes, challenges, APIs, and organizational change</p>
+                        <div class="topic-stats">3 questions available</div>
+                    </div>
+                    
+                    <div class="topic-card comprehensive" onclick="quiz.selectTopic('comprehensive')">
+                        <div class="topic-icon">🎯</div>
+                        <h3>Comprehensive Quiz</h3>
+                        <p>Mixed questions from all topics - the ultimate challenge</p>
+                        <div class="topic-stats">12 random questions from all categories</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-content" id="quiz-content">
+                <div class="question-container" id="question-container">
+                    <!-- Questions will be dynamically loaded here -->
+                </div>
+                
+                <div class="quiz-navigation">
+                    <button id="prev-btn" class="nav-btn" disabled>Previous</button>
+                    <button id="next-btn" class="nav-btn">Next</button>
+                    <button id="submit-btn" class="submit-btn" style="display: none;">Submit Quiz</button>
+                </div>
+            </div>
+
+            <div class="quiz-results" id="quiz-results" style="display: none;">
+                <div class="results-header">
+                    <h2>Quiz Complete!</h2>
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <span id="score-percentage">0%</span>
+                        </div>
+                        <div class="score-details">
+                            <p id="score-text">You scored 0 out of 12</p>
+                            <p id="performance-message">Great effort!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-actions">
+                    <button id="retake-btn" class="action-btn primary">Retake Quiz</button>
+                    <button id="review-btn" class="action-btn secondary">Review Answers</button>
+                </div>
+
+                <div class="answer-review" id="answer-review" style="display: none;">
+                    <h3>Answer Review</h3>
+                    <div id="review-content">
+                        <!-- Answer review will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Start Screen -->
+            <div class="quiz-start" id="quiz-start" style="display: none;">
+                <div class="start-content">
+                    <h2 id="selected-topic-title">Ready to Test Your Knowledge?</h2>
+                    <div class="selected-topic-info" id="selected-topic-info">
+                        <div class="topic-description" id="topic-description"></div>
+                    </div>
+                    <div class="quiz-info">
+                        <div class="info-item">
+                            <strong>Questions:</strong> <span id="question-count">12 randomly selected</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Time Limit:</strong> No time pressure - take your time
+                        </div>
+                        <div class="info-item">
+                            <strong>Passing Score:</strong> No pass/fail - learn and improve
+                        </div>
+                        <div class="info-item">
+                            <strong>Retakes:</strong> Unlimited attempts with different questions
+                        </div>
+                    </div>
+                    <div class="start-actions">
+                        <button id="start-quiz-btn" class="action-btn primary">Start Quiz</button>
+                        <button id="back-to-topics-btn" class="action-btn secondary">Choose Different Topic</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="theme-switcher" id="theme-toggle">Toggle Theme</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
