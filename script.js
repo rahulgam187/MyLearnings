@@ -7,25 +7,31 @@ if (localStorage.getItem('theme') === 'dark') {
     body.classList.add('dark-mode');
 }
 
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    
-    // Save theme preference
-    if (body.classList.contains('dark-mode')) {
-        localStorage.setItem('theme', 'dark');
-    } else {
-        localStorage.removeItem('theme');
-    }
-});
+// Only add event listener if theme toggle exists
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        // Save theme preference
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
+        }
+    });
+}
 
 // Hamburger menu logic
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    hamburger.classList.toggle('active');
-});
+// Only add event listener if hamburger menu exists
+if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    });
+}
 
 // Intersection Observer for animations (if on tech letter page)
 if (document.querySelector('h2')) {
@@ -47,6 +53,7 @@ if (document.querySelector('h2')) {
 // Quiz Functionality
 class QuizApp {
     constructor() {
+        console.log('QuizApp constructor called');
         this.questionBank = {
             'cloud-revolution': [
                 {
@@ -56,15 +63,21 @@ class QuizApp {
                     type: "single"
                 },
                 {
-                    question: "Which cloud era focuses on using cloud to drive innovation and adapt to market changes?",
-                    options: ["VM Cloud era", "Infrastructure Cloud era", "Transformation Cloud era", "Hybrid Cloud era"],
+                    question: "Which of the following is NOT a benefit of Google Cloud for digital transformation?",
+                    options: ["Scalability", "Manual data entry", "Security", "Cost efficiency"],
+                    correct: [1],
+                    type: "single"
+                },
+                {
+                    question: "Google Cloud doesn't enables organizations to:",
+                    options: ["Store data securely", "Run applications at scale", "Eliminate the need for any IT staff", "Analyze data in real time"],
                     correct: [2],
                     type: "single"
                 },
                 {
-                    question: "What is the main difference between CapEx and OpEx in cloud computing?",
-                    options: ["CapEx is recurring, OpEx is one-time", "CapEx is upfront investment, OpEx is pay-as-you-go", "There is no difference", "CapEx is only for software, OpEx is for hardware"],
-                    correct: [1],
+                    question: "Which Google Cloud product is primarily used for data warehousing?",
+                    options: ["BigQuery", "Google Drive", "Google Sheets", "Google Docs"],
+                    correct: [0],
                     type: "single"
                 },
                 {
@@ -74,19 +87,65 @@ class QuizApp {
                     type: "multiple"
                 },
                 {
+                    question: "Which cloud service model provides the most control?",
+                    options: ["SaaS", "PaaS", "IaaS", "FaaS"],
+                    correct: [2],
+                    type: "single"
+                },
+                {
+                    question: "What is the main advantage of using Google Kubernetes Engine (GKE)? (Select all that apply)",
+                    options: ["Manual server management", "Automated container orchestration", "Increased downtime", "Scalability of applications"],
+                    correct: [1, 3],
+                    type: "multiple"
+                },
+                {
+                    question: "Which service would you use for serverless computing on Google Cloud? (Select all that apply)",
+                    options: ["Compute Engine", "App Engine", "Cloud Functions", "Cloud Storage"],
+                    correct: [1, 2],
+                    type: "multiple"
+                },
+                {
+                    question: "Which of the following is a default security feature offered by Google Cloud?",
+                    options: ["Identity and Access Management (IAM)", "Cloud Armor", "Manual password sharing", "Data encryption at rest"],
+                    correct: [3],
+                    type: "single"
+                },
+                {
+                    question: "What does Google Cloud's Anthos platform help organizations achieve? (Select all that apply)",
+                    options: ["Multi-cloud management", "On-premises only deployment", "Hybrid cloud operations", "Manual scaling"],
+                    correct: [0, 2],
+                    type: "multiple"
+                },
+                {
+                    question: "Which Google Cloud service is best suited for storing unstructured data?",
+                    options: ["Cloud SQL", "Cloud Storage", "BigQuery", "Cloud Functions"],
+                    correct: [1],
+                    type: "single"
+                },
+                {
+                    question: "What is a key benefit of using Google Cloud's data analytics tools? (Select all that apply)",
+                    options: ["Real-time insights", "Increased paperwork", "Manual data processing", "Automated reporting"],
+                    correct: [0, 3],
+                    type: "multiple"
+                },
+                {
                     question: "Which of the following are challenges organizations face during digital transformation? (Select all that apply)",
                     options: ["Legacy systems", "Resistance to change", "Unlimited budgets", "Skills gap"],
                     correct: [0, 1, 3],
                     type: "multiple"
                 },
                 {
+                    question: "Google Cloud's security model is based on which principle?",
+                    options: ["Trust everything", "Zero trust", "Open access", "No encryption"],
+                    correct: [1],
+                    type: "single"
+                },
+                {
                     question: "What is the role of APIs in digital transformation? (Select all that apply)",
                     options: ["Facilitate integration between systems", "Increase manual work", "Enable automation", "Restrict data sharing"],
                     correct: [0, 2],
                     type: "multiple"
-                }
-            ],
-            'shared-responsibility': [
+                },
                 {
                     question: "According to the shared responsibility model, who is responsible for 'Security OF the Cloud'?",
                     options: ["The customer/consumer", "The cloud provider (Google Cloud)", "Both equally", "It depends on the service model"],
@@ -116,69 +175,11 @@ class QuizApp {
                     options: ["User access management", "Data encryption keys", "Physical security of data centers", "Application-level security"],
                     correct: [2],
                     type: "single"
-                }
-            ],
-            'google-cloud-services': [
-                {
-                    question: "Which Google Cloud product is primarily used for data warehousing?",
-                    options: ["BigQuery", "Google Drive", "Google Sheets", "Google Docs"],
-                    correct: [0],
-                    type: "single"
                 },
                 {
-                    question: "Which cloud service model provides the most control?",
-                    options: ["SaaS", "PaaS", "IaaS", "FaaS"],
+                    question: "Which cloud era focuses on using cloud to drive innovation and adapt to market changes?",
+                    options: ["VM Cloud era", "Infrastructure Cloud era", "Transformation Cloud era", "Hybrid Cloud era"],
                     correct: [2],
-                    type: "single"
-                },
-                {
-                    question: "What is the main advantage of using Google Kubernetes Engine (GKE)? (Select all that apply)",
-                    options: ["Manual server management", "Automated container orchestration", "Increased downtime", "Scalability of applications"],
-                    correct: [1, 3],
-                    type: "multiple"
-                },
-                {
-                    question: "Which service would you use for serverless computing on Google Cloud? (Select all that apply)",
-                    options: ["Compute Engine", "App Engine", "Cloud Functions", "Cloud Storage"],
-                    correct: [1, 2],
-                    type: "multiple"
-                },
-                {
-                    question: "What does Google Cloud's Anthos platform help organizations achieve? (Select all that apply)",
-                    options: ["Multi-cloud management", "On-premises only deployment", "Hybrid cloud operations", "Manual scaling"],
-                    correct: [0, 2],
-                    type: "multiple"
-                },
-                {
-                    question: "Which Google Cloud service is best suited for storing unstructured data?",
-                    options: ["Cloud SQL", "Cloud Storage", "BigQuery", "Cloud Functions"],
-                    correct: [1],
-                    type: "single"
-                },
-                {
-                    question: "What is a key benefit of using Google Cloud's data analytics tools? (Select all that apply)",
-                    options: ["Real-time insights", "Increased paperwork", "Manual data processing", "Automated reporting"],
-                    correct: [0, 3],
-                    type: "multiple"
-                }
-            ],
-            'digital-transformation': [
-                {
-                    question: "Which of the following is NOT a benefit of Google Cloud for digital transformation?",
-                    options: ["Scalability", "Manual data entry", "Security", "Cost efficiency"],
-                    correct: [1],
-                    type: "single"
-                },
-                {
-                    question: "Google Cloud doesn't enables organizations to:",
-                    options: ["Store data securely", "Run applications at scale", "Eliminate the need for any IT staff", "Analyze data in real time"],
-                    correct: [2],
-                    type: "single"
-                },
-                {
-                    question: "Google Cloud's security model is based on which principle?",
-                    options: ["Trust everything", "Zero trust", "Open access", "No encryption"],
-                    correct: [1],
                     type: "single"
                 }
             ]
@@ -187,23 +188,7 @@ class QuizApp {
         this.topicInfo = {
             'cloud-revolution': {
                 title: 'Cloud Revolution Quiz',
-                description: 'Test your understanding of cloud eras, digital transformation drivers, and the evolution from traditional IT to cloud-native approaches.'
-            },
-            'shared-responsibility': {
-                title: 'Shared Responsibility Model Quiz',
-                description: 'Evaluate your knowledge of security responsibilities between cloud providers and customers across different service models.'
-            },
-            'google-cloud-services': {
-                title: 'Google Cloud Services Quiz',
-                description: 'Challenge yourself on GCP products, serverless computing, data analytics tools, and platform-specific capabilities.'
-            },
-            'digital-transformation': {
-                title: 'Digital Transformation Quiz',
-                description: 'Assess your understanding of business process transformation, organizational challenges, and technology adoption strategies.'
-            },
-            'comprehensive': {
-                title: 'Comprehensive Google Cloud Quiz',
-                description: 'The ultimate challenge! Questions from all categories to test your complete Google Cloud digital leadership knowledge.'
+                description: 'Test your comprehensive understanding of digital transformation, Google Cloud services, security models, and cloud evolution.'
             }
         };
 
@@ -217,10 +202,19 @@ class QuizApp {
     }
 
     initializeQuiz() {
+        console.log('initializeQuiz called');
+        const topicSelection = document.getElementById('topic-selection');
+        console.log('topic-selection element:', topicSelection);
+        
         // Only initialize if we're on the quiz page
-        if (!document.getElementById('topic-selection')) return;
+        if (!topicSelection) {
+            console.log('topic-selection not found, skipping initialization');
+            return;
+        }
 
+        console.log('Binding events...');
         this.bindEvents();
+        console.log('Showing topic selection...');
         this.showTopicSelection();
     }
 
@@ -232,6 +226,7 @@ class QuizApp {
         const retakeBtn = document.getElementById('retake-btn');
         const reviewBtn = document.getElementById('review-btn');
         const backToTopicsBtn = document.getElementById('back-to-topics-btn');
+        const newTopicBtn = document.getElementById('new-topic-btn');
 
         if (startBtn) startBtn.addEventListener('click', () => this.startQuiz());
         if (nextBtn) nextBtn.addEventListener('click', () => this.nextQuestion());
@@ -240,6 +235,7 @@ class QuizApp {
         if (retakeBtn) retakeBtn.addEventListener('click', () => this.retakeQuiz());
         if (reviewBtn) reviewBtn.addEventListener('click', () => this.toggleReview());
         if (backToTopicsBtn) backToTopicsBtn.addEventListener('click', () => this.showTopicSelection());
+        if (newTopicBtn) newTopicBtn.addEventListener('click', () => this.showTopicSelection());
     }
 
     showTopicSelection() {
@@ -251,6 +247,7 @@ class QuizApp {
     }
 
     selectTopic(topicId) {
+        console.log('selectTopic called with:', topicId);
         this.selectedTopic = topicId;
         this.showQuizStart();
     }
@@ -268,7 +265,8 @@ class QuizApp {
             document.getElementById('question-count').textContent = '12 questions from all topics';
         } else {
             const questionCount = this.questionBank[this.selectedTopic].length;
-            document.getElementById('question-count').textContent = `${questionCount} questions`;
+            const quizLength = Math.min(12, questionCount);
+            document.getElementById('question-count').textContent = `${quizLength} questions`;
         }
     }
 
@@ -281,9 +279,9 @@ class QuizApp {
         } else {
             // Use all questions from the selected topic
             this.currentQuiz = [...this.questionBank[this.selectedTopic]];
-            // If topic has more than 8 questions, randomly select 8
-            if (this.currentQuiz.length > 8) {
-                this.currentQuiz = this.getRandomQuestions(this.currentQuiz, Math.min(8, this.currentQuiz.length));
+            // If topic has more than 12 questions, randomly select 12
+            if (this.currentQuiz.length > 12) {
+                this.currentQuiz = this.getRandomQuestions(this.currentQuiz, 12);
             }
         }
 
@@ -320,7 +318,8 @@ class QuizApp {
                         <input type="${question.type === 'multiple' ? 'checkbox' : 'radio'}" 
                                name="question_${this.currentQuestionIndex}" 
                                value="${index}"
-                               id="option_${index}">
+                               id="option_${index}"
+                               onclick="event.stopPropagation();">
                         <label class="option-text" for="option_${index}">${option}</label>
                     </div>
                 `).join('')}
@@ -352,26 +351,28 @@ class QuizApp {
         const container = document.getElementById('question-container');
         
         if (question.type === 'multiple') {
-            // Multiple selection
-            const checkbox = container.querySelector(`input[value="${optionIndex}"]`);
-            const option = checkbox.closest('.option');
-            
-            if (!this.userAnswers[this.currentQuestionIndex]) {
-                this.userAnswers[this.currentQuestionIndex] = [];
-            }
-            
-            if (checkbox.checked) {
-                // Remove from selection
-                checkbox.checked = false;
-                option.classList.remove('selected');
-                this.userAnswers[this.currentQuestionIndex] = 
-                    this.userAnswers[this.currentQuestionIndex].filter(i => i !== optionIndex);
-            } else {
-                // Add to selection
-                checkbox.checked = true;
-                option.classList.add('selected');
-                this.userAnswers[this.currentQuestionIndex].push(optionIndex);
-            }
+            // Multiple selection - use timeout to ensure checkbox state is updated
+            setTimeout(() => {
+                const checkbox = container.querySelector(`input[value="${optionIndex}"]`);
+                const option = checkbox.closest('.option');
+                
+                if (!this.userAnswers[this.currentQuestionIndex]) {
+                    this.userAnswers[this.currentQuestionIndex] = [];
+                }
+                
+                if (checkbox.checked) {
+                    // Add to selection if not already present
+                    if (!this.userAnswers[this.currentQuestionIndex].includes(optionIndex)) {
+                        this.userAnswers[this.currentQuestionIndex].push(optionIndex);
+                    }
+                    option.classList.add('selected');
+                } else {
+                    // Remove from selection
+                    this.userAnswers[this.currentQuestionIndex] = 
+                        this.userAnswers[this.currentQuestionIndex].filter(i => i !== optionIndex);
+                    option.classList.remove('selected');
+                }
+            }, 0);
         } else {
             // Single selection
             container.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
@@ -433,27 +434,43 @@ class QuizApp {
 
     calculateScore() {
         this.score = 0;
+        let incorrectQuestions = [];
         
         this.currentQuiz.forEach((question, index) => {
             const userAnswer = this.userAnswers[index];
             const correctAnswer = question.correct;
+            let isCorrect = false;
             
             if (question.type === 'multiple') {
                 // For multiple choice, check if arrays match exactly
                 if (Array.isArray(userAnswer) && userAnswer.length === correctAnswer.length) {
                     const sortedUser = [...userAnswer].sort();
                     const sortedCorrect = [...correctAnswer].sort();
-                    if (sortedUser.every((val, i) => val === sortedCorrect[i])) {
-                        this.score++;
-                    }
+                    isCorrect = sortedUser.every((val, i) => val === sortedCorrect[i]);
                 }
             } else {
                 // For single choice
-                if (userAnswer === correctAnswer[0]) {
-                    this.score++;
-                }
+                isCorrect = userAnswer === correctAnswer[0];
+            }
+            
+            if (isCorrect) {
+                this.score++;
+            } else {
+                incorrectQuestions.push({
+                    questionNum: index + 1,
+                    question: question.question,
+                    userAnswer: userAnswer,
+                    correctAnswer: correctAnswer,
+                    type: question.type
+                });
             }
         });
+        
+        // Log incorrect questions for debugging
+        if (incorrectQuestions.length > 0) {
+            console.log('Incorrect Questions:', incorrectQuestions);
+        }
+        console.log(`Score: ${this.score}/${this.currentQuiz.length}`);
     }
 
     showResults() {
@@ -477,7 +494,7 @@ class QuizApp {
             message = 'Keep studying! Consider reviewing the tech letter content and retaking the quiz.';
         }
         
-        document.getElementById('performance-message').textContent = message;
+        document.getElementById('score-message').textContent = message;
     }
 
     retakeQuiz() {
@@ -541,5 +558,14 @@ class QuizApp {
 
 // Initialize quiz when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    window.quiz = new QuizApp();
+    console.log('DOM loaded, creating quiz...');
+    setTimeout(() => {
+        console.log('Creating quiz after timeout...');
+        try {
+            window.quiz = new QuizApp();
+            console.log('Quiz created successfully:', window.quiz);
+        } catch (error) {
+            console.error('Error creating quiz:', error);
+        }
+    }, 100);
 });

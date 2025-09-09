@@ -44,37 +44,28 @@
                     <div class="topic-card" onclick="quiz.selectTopic('cloud-revolution')">
                         <div class="topic-icon">☁️</div>
                         <h3>Cloud Revolution</h3>
-                        <p>Cloud eras, transformation mindset, and digital transformation drivers</p>
-                        <div class="topic-stats">6 questions available</div>
+                        <p>Comprehensive quiz covering cloud eras, digital transformation, Google Cloud services, shared responsibility model, and business transformation strategies</p>
+                        <div class="topic-stats">21 questions available • 12 randomly selected</div>
                     </div>
-                    
-                    <div class="topic-card" onclick="quiz.selectTopic('shared-responsibility')">
-                        <div class="topic-icon">🔒</div>
-                        <h3>Shared Responsibility Model</h3>
-                        <p>Security responsibilities, service models, and cloud provider vs customer roles</p>
-                        <div class="topic-stats">5 questions available</div>
+                </div>
+            </div>
+
+            <!-- Quiz Start Screen -->
+            <div class="quiz-start" id="quiz-start" style="display: none;">
+                <div class="start-container">
+                    <h2 id="selected-topic-title">Cloud Revolution</h2>
+                    <p id="topic-description">Test your knowledge on cloud computing and digital transformation</p>
+                    <div class="quiz-info">
+                        <div class="info-item">
+                            <span class="info-label">Questions:</span>
+                            <span id="question-count">12 questions</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Time:</span>
+                            <span>No time limit</span>
+                        </div>
                     </div>
-                    
-                    <div class="topic-card" onclick="quiz.selectTopic('google-cloud-services')">
-                        <div class="topic-icon">🚀</div>
-                        <h3>Google Cloud Services</h3>
-                        <p>GCP products, serverless computing, data analytics, and platform capabilities</p>
-                        <div class="topic-stats">7 questions available</div>
-                    </div>
-                    
-                    <div class="topic-card" onclick="quiz.selectTopic('digital-transformation')">
-                        <div class="topic-icon">⚡</div>
-                        <h3>Digital Transformation</h3>
-                        <p>Business processes, challenges, APIs, and organizational change</p>
-                        <div class="topic-stats">3 questions available</div>
-                    </div>
-                    
-                    <div class="topic-card comprehensive" onclick="quiz.selectTopic('comprehensive')">
-                        <div class="topic-icon">🎯</div>
-                        <h3>Comprehensive Quiz</h3>
-                        <p>Mixed questions from all topics - the ultimate challenge</p>
-                        <div class="topic-stats">12 random questions from all categories</div>
-                    </div>
+                    <button id="start-quiz-btn" class="start-btn">Start Quiz</button>
                 </div>
             </div>
 
@@ -99,55 +90,24 @@
                         </div>
                         <div class="score-details">
                             <p id="score-text">You scored 0 out of 12</p>
-                            <p id="performance-message">Great effort!</p>
+                            <p class="score-message" id="score-message"></p>
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="results-actions">
-                    <button id="retake-btn" class="action-btn primary">Retake Quiz</button>
-                    <button id="review-btn" class="action-btn secondary">Review Answers</button>
+                    <button id="review-btn" class="review-btn">Review Answers</button>
+                    <button id="retake-btn" class="retake-btn">Retake Quiz</button>
+                    <button id="new-topic-btn" class="new-topic-btn">Choose Different Topic</button>
                 </div>
 
                 <div class="answer-review" id="answer-review" style="display: none;">
                     <h3>Answer Review</h3>
-                    <div id="review-content">
-                        <!-- Answer review will be populated here -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quiz Start Screen -->
-            <div class="quiz-start" id="quiz-start" style="display: none;">
-                <div class="start-content">
-                    <h2 id="selected-topic-title">Ready to Test Your Knowledge?</h2>
-                    <div class="selected-topic-info" id="selected-topic-info">
-                        <div class="topic-description" id="topic-description"></div>
-                    </div>
-                    <div class="quiz-info">
-                        <div class="info-item">
-                            <strong>Questions:</strong> <span id="question-count">12 randomly selected</span>
-                        </div>
-                        <div class="info-item">
-                            <strong>Time Limit:</strong> No time pressure - take your time
-                        </div>
-                        <div class="info-item">
-                            <strong>Passing Score:</strong> No pass/fail - learn and improve
-                        </div>
-                        <div class="info-item">
-                            <strong>Retakes:</strong> Unlimited attempts with different questions
-                        </div>
-                    </div>
-                    <div class="start-actions">
-                        <button id="start-quiz-btn" class="action-btn primary">Start Quiz</button>
-                        <button id="back-to-topics-btn" class="action-btn secondary">Choose Different Topic</button>
-                    </div>
+                    <div id="review-content"></div>
                 </div>
             </div>
         </div>
     </div>
-
-    <button class="theme-switcher" id="theme-toggle">Toggle Theme</button>
 
     <script src="script.js"></script>
 </body>
