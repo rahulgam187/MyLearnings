@@ -1,0 +1,18 @@
+Subject: Starting Google Cloud Digital Leadership Certification Journey - Weekly Tech Newsletters
+
+Hi Team,
+
+I wanted to share some exciting news with you all. I've embarked on a Google Cloud Digital Leadership certification journey to deepen my understanding of cloud technologies and digital transformation strategies.
+
+As part of this learning experience and to hold myself accountable, I'll be posting tech newsletters on my website on a weekly basis, documenting key insights and learnings from the certification program. This will help me reinforce the concepts while potentially providing valuable information for anyone interested in cloud leadership topics.
+
+I'll send out a brief email notification whenever I add new topics to the site, so you can stay updated on the latest content if you're interested.
+
+I want to extend my sincere thanks to Maduri and Tom for allowing me to pursue this professional development opportunity and share my learnings in this format.
+
+You can check out the content at: https://rahulgam187.github.io/MyLearnings/
+
+Looking forward to sharing insights from this certification journey with the team on a regular basis!
+
+Best regards,
+Rahul

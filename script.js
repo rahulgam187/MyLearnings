@@ -182,6 +182,152 @@ class QuizApp {
                     correct: [2],
                     type: "single"
                 }
+            ],
+            'data-transformation': [
+                {
+                    question: "How long can traditional data analysis methods take according to the document?",
+                    options: ["Hours to days", "Days to weeks", "Weeks to months", "Months to years"],
+                    correct: [2],
+                    type: "single"
+                },
+                {
+                    question: "What is the key difference between cloud and traditional data analysis in terms of speed?",
+                    options: ["Cloud analysis takes longer but is more accurate", "Cloud analysis can be consumed and analyzed at scale and speed like never before", "Traditional methods are faster for small datasets", "There is no significant difference in speed"],
+                    correct: [1],
+                    type: "single"
+                },
+                {
+                    question: "What type of data is described as 'highly organized and well defined'?",
+                    options: ["Semi-structured data", "Unstructured data", "Structured data", "Raw data"],
+                    correct: [2],
+                    type: "single"
+                },
+                {
+                    question: "Which Google Cloud service is mentioned for data warehousing?",
+                    options: ["Cloud SQL", "BigTable", "BigQuery", "Firestore"],
+                    correct: [2],
+                    type: "single"
+                },
+                {
+                    question: "What is the main difference between a data warehouse and a data lake?",
+                    options: ["Data lakes are smaller than data warehouses", "Data warehouses contain structured data that has been cleaned and processed, while data lakes store raw data in original format", "Data lakes are more expensive than data warehouses", "There is no difference between them"],
+                    correct: [1],
+                    type: "single"
+                },
+                {
+                    question: "What does 'first party data' refer to?",
+                    options: ["Data purchased from external vendors", "Government or public datasets", "Proprietary customer datasets that a business collects from customers or audience", "Data shared between partner organizations"],
+                    correct: [2],
+                    type: "single"
+                },
+                {
+                    question: "Which storage class in Google Cloud Storage is best for data accessed less than once a year?",
+                    options: ["Standard", "Near line", "Cold line", "Archive storage"],
+                    correct: [3],
+                    type: "single"
+                },
+                {
+                    question: "What is the minimum storage duration requirement for Archive storage class?",
+                    options: ["30 days", "90 days", "365 days", "No minimum requirement"],
+                    correct: [2],
+                    type: "single"
+                },
+                {
+                    question: "Which Google Cloud service is described as a 'flexible, horizontally scalable, NoSQL cloud DB'?",
+                    options: ["Cloud SQL", "Spanner", "BigQuery", "Firestore"],
+                    correct: [3],
+                    type: "single"
+                },
+                {
+                    question: "What does Pub/Sub stand for?",
+                    options: ["Public/Subscription", "Publisher/Subscriber", "Publication/Submit", "Public/Submit"],
+                    correct: [1],
+                    type: "single"
+                },
+                {
+                    question: "Which Apache technology is mentioned as a popular solution for pipeline design?",
+                    options: ["Apache Spark", "Apache Kafka", "Apache Beam", "Apache Storm"],
+                    correct: [2],
+                    type: "single"
+                },
+                {
+                    question: "What availability percentage does Cloud SQL provide?",
+                    options: ["Greater than 99.95%", "Up to 99.99%", "99.9%", "100%"],
+                    correct: [0],
+                    type: "single"
+                },
+                {
+                    question: "Which of the following are mentioned as data model categorizations?",
+                    options: ["Structured", "Semi-structured", "Unstructured", "Raw data", "Processed data"],
+                    correct: [0, 1, 2],
+                    type: "multiple"
+                },
+                {
+                    question: "Which storage classes are mentioned for Google Cloud Storage?",
+                    options: ["Standard", "Near line", "Cold line", "Archive storage", "Premium storage"],
+                    correct: [0, 1, 2, 3],
+                    type: "multiple"
+                },
+                {
+                    question: "What are the stages mentioned in the data value chain?",
+                    options: ["Data genesis", "Data collections", "Data processing", "Data storage", "Data analysis", "Data activation"],
+                    correct: [0, 1, 2, 3, 4, 5],
+                    type: "multiple"
+                },
+                {
+                    question: "Which of the following are mentioned as benefits of data governance?",
+                    options: ["Make data more valuable", "Users make better and more timely decisions", "Improves cost controls", "Enhances regulatory compliance", "Manage risk"],
+                    correct: [0, 1, 2, 3, 4],
+                    type: "multiple"
+                },
+                {
+                    question: "What are the commonalities among Google Cloud Storage classes mentioned?",
+                    options: ["Unlimited storage with no minimum object size requirement", "World wide accessibility and location", "Low latency and high durability", "Same pricing structure", "Automatic encryption"],
+                    correct: [0, 1, 2],
+                    type: "multiple"
+                },
+                {
+                    question: "Which databases are mentioned as being supported by Cloud SQL?",
+                    options: ["MySQL", "PostgreSQL", "SQL Server", "Oracle", "MongoDB"],
+                    correct: [0, 1, 2],
+                    type: "multiple"
+                },
+                {
+                    question: "According to the document, what does Spanner provide?",
+                    options: ["Built-in high availability", "Data redundancy to reduce downtime", "Strong global consistency", "ACID compliance", "Automatic horizontal scaling"],
+                    correct: [0, 1, 2, 3],
+                    type: "multiple"
+                },
+                {
+                    question: "What types of data sources are mentioned for streaming analytics?",
+                    options: ["Click stream", "Social media feeds", "Stock market data", "Gaming events", "IoT devices"],
+                    correct: [0, 1, 2, 3, 4],
+                    type: "multiple"
+                },
+                {
+                    question: "Which Google Cloud services are mentioned for streaming analytics?",
+                    options: ["Pub/Sub", "Dataflow", "BigQuery", "Cloud SQL", "Firestore"],
+                    correct: [0, 1],
+                    type: "multiple"
+                },
+                {
+                    question: "What are the problems mentioned for organizations without proper data governance?",
+                    options: ["Compliance violations which can lead to fines", "Poor data quality", "Delayed analysis and missed business opportunities", "Poorly trained AI models", "Reduced accuracy and benefits of using AI"],
+                    correct: [0, 1, 2, 3, 4],
+                    type: "multiple"
+                },
+                {
+                    question: "Which of the following are mentioned as characteristics of BigQuery?",
+                    options: ["Fully managed data warehouse", "Can store petabytes of data", "Data encrypted at rest by default", "Built-in ML features", "Multi-cloud support"],
+                    correct: [0, 1, 2, 3, 4],
+                    type: "multiple"
+                },
+                {
+                    question: "What are the migration approaches mentioned in the document?",
+                    options: ["Lift and shift", "Managed DB migration", "Database replication", "Hybrid migration", "Complete rebuild"],
+                    correct: [0, 1],
+                    type: "multiple"
+                }
             ]
         };
 
@@ -189,6 +335,10 @@ class QuizApp {
             'cloud-revolution': {
                 title: 'Cloud Revolution Quiz',
                 description: 'Test your comprehensive understanding of digital transformation, Google Cloud services, security models, and cloud evolution.'
+            },
+            'data-transformation': {
+                title: 'Data Transformation Quiz',
+                description: 'Test your knowledge on data management, Google Cloud storage solutions, data governance, streaming analytics, and business intelligence.'
             }
         };
 
